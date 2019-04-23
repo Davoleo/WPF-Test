@@ -6,7 +6,20 @@
         xmlns:local="clr-namespace:WPF_Test"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <TextBlock Text="Hello World!"/>
-    </Grid>
+    <StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="8">
+            <TextBlock>Name</TextBlock>
+            <TextBox x:Name="txbName" Width="120" Margin="8, 0"></TextBox>
+
+            <TextBlock>Surname</TextBlock>
+            <TextBox x:Name="txbSurname" Width="120" Margin="8, 0"></TextBox>
+
+            <Button Click="Button_Click">Submit</Button>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <TextBlock x:FieldModifier="private" x:Name="lblGreetings"></TextBlock>
+        </StackPanel>
+
+    </StackPanel>
 </Window>

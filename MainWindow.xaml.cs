@@ -24,5 +24,10 @@ namespace WPF_Test
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            lblGreetings.Text = $"Cordiali Saluti {txbName.Text} {txbSurname.Text}!";
+        }
     }
 }
