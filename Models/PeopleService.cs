@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace WPF_Test.Models
 {
-    class PeopleService
+
+    public interface IPeopleService
+    {
+        IList<Person> People { get; }
+    }
+
+    class PeopleService : IPeopleService
     {
 
         private List<Person> people = null;

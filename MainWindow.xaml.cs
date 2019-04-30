@@ -21,12 +21,13 @@ namespace WPF_Test
     public partial class MainWindow : Window
     {
 
-        private Models.PeopleService peopleService = null;
+        private Models.IPeopleService peopleService = null;
 
-        public MainWindow()
+        public MainWindow(Models.IPeopleService peopleService)
         {
             InitializeComponent();
-            peopleService = new Models.PeopleService();
+            this.peopleService = peopleService;
+
             comboPeople.ItemsSource = peopleService.People;
             comboPeople.DisplayMemberPath = "Surname";
         }

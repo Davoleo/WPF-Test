@@ -13,5 +13,12 @@ namespace WPF_Test
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            MainWindow window = new MainWindow(new Models.PeopleService());
+            window.Show();
+        }
     }
 }

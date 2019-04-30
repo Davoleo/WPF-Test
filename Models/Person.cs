@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WPF_Test.Models
 {
-    class Person
+    public class Person
     {
         public string Name { get; set; }
 
