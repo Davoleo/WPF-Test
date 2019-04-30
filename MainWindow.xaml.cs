@@ -20,14 +20,24 @@ namespace WPF_Test
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private Models.PeopleService peopleService = null;
+
         public MainWindow()
         {
             InitializeComponent();
+            peopleService = new Models.PeopleService();
+            comboPeople.ItemsSource = peopleService.People;
+            comboPeople.DisplayMemberPath = "Surname";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            lblGreetings.Text = $"Cordiali Saluti {txbName.Text} {txbSurname.Text}!";
+            if (comboPeople.SelectedItem != null)
+            {
+                Models.Person person = (Models.Person)comboPeople.SelectedItem;
+                lblGreetings.Text = $"Cordiali Saluti {person.Name} {person.Surname}";
+            }
         }
     }
 }

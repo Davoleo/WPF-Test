@@ -8,11 +8,9 @@
         Title="MainWindow" Height="450" Width="800">
     <StackPanel Background="#FFFF9C9C">
         <StackPanel Orientation="Horizontal" Margin="8">
-            <TextBlock>Name</TextBlock>
-            <TextBox x:Name="txbName" Width="120" Margin="8, 0"></TextBox>
 
             <TextBlock>Surname</TextBlock>
-            <TextBox x:Name="txbSurname" Width="120" Margin="8, 0"></TextBox>
+            <ComboBox x:Name="comboPeople" x:FieldModifier="private" Width="120" Margin="8, 0"></ComboBox>
 
             <Button Click="Button_Click">Submit</Button>
         </StackPanel>
@@ -20,8 +18,11 @@
         <StackPanel Orientation="Horizontal">
             <TextBlock x:FieldModifier="private" x:Name="lblGreetings"></TextBlock>
         </StackPanel>
-        <Canvas Height="100" Background="#FFFFB679" Margin="50" Visibility="Collapsed"/>
-        <Canvas Height="100" Background="#FFA7D3FF"/>
+                
+        <!--
+            <Canvas Height="100" Background="#FFFFB679" Margin="50" Visibility="Collapsed"/>
+            <Canvas Height="100" Background="#FFA7D3FF"/>
+        -->
        
 
     </StackPanel>
