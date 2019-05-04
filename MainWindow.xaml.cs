@@ -21,24 +21,15 @@ namespace WPF_Test
     public partial class MainWindow : Window
     {
 
-        private Models.IPeopleService peopleService = null;
-
-        public MainWindow(Models.IPeopleService peopleService)
+        public MainWindow(ViewModels.MainWindowViewModel vm)
         {
             InitializeComponent();
-            this.peopleService = peopleService;
-
-            comboPeople.ItemsSource = peopleService.People;
-            comboPeople.DisplayMemberPath = "Surname";
+            DataContext = vm;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (comboPeople.SelectedItem != null)
-            {
-                Models.Person person = (Models.Person)comboPeople.SelectedItem;
-                lblGreetings.Text = $"Cordiali Saluti {person.Name} {person.Surname}";
-            }
+            (DataContext as ViewModels.MainWindowViewModel).Greet();
         }
     }
 }

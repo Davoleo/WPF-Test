@@ -10,7 +10,9 @@
         <StackPanel Orientation="Horizontal" Margin="8">
 
             <TextBlock>Surname</TextBlock>
-            <ComboBox x:Name="comboPeople" x:FieldModifier="private" Width="120" Margin="8, 0"></ComboBox>
+            <ComboBox x:Name="comboPeople" x:FieldModifier="private" Width="120" Margin="8, 0" 
+                      ItemsSource="{Binding Path=People}" DisplayMemberPath="Surname"
+                      SelectedItem="{Binding Path=SelectedPerson}"></ComboBox>
 
             <Button Click="Button_Click">Submit</Button>
         </StackPanel>

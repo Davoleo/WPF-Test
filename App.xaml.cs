@@ -17,8 +17,11 @@ namespace WPF_Test
         {
             base.OnStartup(e);
 
-            MainWindow window = new MainWindow(new Models.PeopleService());
-            window.Show();
+            Models.PeopleService peopleService = new Models.PeopleService();
+            ViewModels.MainWindowViewModel mainWindowViewModel = new ViewModels.MainWindowViewModel(peopleService);
+
+            MainWindow main = new MainWindow(mainWindowViewModel);
+            main.Show();
         }
     }
 }
