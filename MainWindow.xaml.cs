@@ -29,7 +29,7 @@ namespace WPF_Test
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            (DataContext as ViewModels.MainWindowViewModel).Greet();
+            lblGreetings.Text = (DataContext as ViewModels.MainWindowViewModel).Greet();
         }
     }
 }

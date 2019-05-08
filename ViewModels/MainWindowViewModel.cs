@@ -17,7 +17,7 @@ namespace WPF_Test.ViewModels
             this.peopleService = peopleService;
         }
 
-        public IList<Models.Person> people => peopleService.People;
+        public IList<Models.Person> People => peopleService.People;
 
         public Models.Person SelectedPerson { get; set; }
 
@@ -35,10 +35,11 @@ namespace WPF_Test.ViewModels
             }
         }
 
-        public void Greet()
+        public string Greet()
         {
             if (SelectedPerson != null)
-                Greetings = $"Greetings {SelectedPerson.Name} {SelectedPerson.Surname}";
+                return Greetings = $"Cordiali Saluti {SelectedPerson.Name} {SelectedPerson.Surname}!";
+            return "";
         }
     }
 }
