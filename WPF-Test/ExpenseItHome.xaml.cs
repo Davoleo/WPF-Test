@@ -24,5 +24,11 @@ namespace WPF_Test
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ExpenseReportPage reportPage = new ExpenseReportPage();
+            this.NavigationService.Navigate(reportPage);
+        }
     }
 }
