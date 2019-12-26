@@ -2,8 +2,7 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:WPF_Test"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d" 
       d:DesignHeight="350" d:DesignWidth="500"
       Title="ExpenseIt - Home">
@@ -24,21 +23,53 @@
             <ImageBrush ImageSource="watermark.png" />
         </Grid.Background>
 
-        <Label Grid.Column="1" FontFamily="Trebuchet MS" FontSize="18" Foreground="#0066CC" VerticalAlignment="Center" FontWeight="Bold">
+        <Grid.Resources>
+            <!-- Expense Item Template -->
+            <DataTemplate x:Key="ExpenseTemplate">
+                <Label Content="{Binding XPath=@Name}" />
+            </DataTemplate>
+
+            <!-- Expense Report Data -->
+            <XmlDataProvider x:Key="ExpenseDataSource" XPath="Expenses">
+                <x:XData>
+                    <Expenses xmlns="">
+                        <Person Name="Davoleo" Department="Legal" >
+                            <Expense ExpenseType="Lunch" ExpenseAmount="50" />
+                            <Expense ExpenseType="Transportation" ExpenseAmount="50" />
+                        </Person>
+                        <Person Name="Matpac" Department="Marketing" >
+                            <Expense ExpenseType="Document Printing" ExpenseAmount="50" />
+                            <Expense ExpenseType="Gift" ExpenseAmount="125" />
+                        </Person>
+                        <Person Name="PierKnight" Department="Engineering" >
+                            <Expense ExpenseType="Magazine Subscription" ExpenseAmount="50" />
+                            <Expense ExpenseType="New Machine" ExpenseAmount="600" />
+                            <Expense ExpenseType="Software" ExpenseAmount="500" />
+                        </Person>
+                        <Person Name="UwU" Department="Finance" >
+                            <Expense ExpenseType="Dinner" ExpenseAmount="100" />
+                        </Person>
+                        <Person Name="St4rb3ll" Department="Design" >
+                            <Expense ExpenseType="Mobile Phone" ExpenseAmount="400" />
+                        </Person>
+                    </Expenses>
+                </x:XData>
+            </XmlDataProvider>
+        </Grid.Resources>
+
+        <Label Grid.Column="1" Style="{StaticResource HeaderTextStyle}">
             View Expense Report
         </Label>
 
-        <Border Grid.Column="1" Grid.Row="1" Height="35" Padding="5" Background="#4E87D4">
-            <Label VerticalAlignment="Center" Foreground="White">Names</Label>
+        <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource ListHeaderStyle}">
+            <Label Style="{StaticResource ListHeaderTextStyle}">Names</Label>
         </Border>
-        <ListBox Name="peopleListBox" Grid.Column="1" Grid.Row="2">
-            <ListBoxItem>Davoleo</ListBoxItem>
-            <ListBoxItem>Matpac</ListBoxItem>
-            <ListBoxItem>PierKnight</ListBoxItem>
-            <ListBoxItem>UwU</ListBoxItem>
-            <ListBoxItem>St4rb3ll</ListBoxItem>
+        <ListBox Name="PeopleListBox" Grid.Column="1" Grid.Row="2"
+                 ItemsSource="{Binding Source={StaticResource ExpenseDataSource}, XPath=Person}"
+                 ItemTemplate="{StaticResource ExpenseTemplate}">
         </ListBox>
 
-        <Button Grid.Row="3" Width="125" Height="25" Margin="0, 10, 0, 0" HorizontalAlignment="Right" Content="View" Grid.Column="1" Click="Button_Click" />
+        <!-- View Report Button -->
+        <Button Grid.Row="3" Style="{StaticResource ButtonStyle}" Grid.Column="1" Click="Button_Click" >View</Button>
     </Grid>
 </Page>
