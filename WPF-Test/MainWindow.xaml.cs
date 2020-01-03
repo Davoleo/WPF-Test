@@ -18,7 +18,7 @@ namespace WPF_Test
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : NavigationWindow
+    public partial class MainWindow
     {
         public MainWindow()
         {
