@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF-Test", "WPF-Test\WPF-Test.csproj", "{B4292052-6D1D-4715-848D-B35CD0DE4219}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTreeView", "WpfTreeView\WpfTreeView.csproj", "{89321954-C686-444A-82A2-2894EB4E1DEB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B4292052-6D1D-4715-848D-B35CD0DE4219}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4292052-6D1D-4715-848D-B35CD0DE4219}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4292052-6D1D-4715-848D-B35CD0DE4219}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89321954-C686-444A-82A2-2894EB4E1DEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89321954-C686-444A-82A2-2894EB4E1DEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89321954-C686-444A-82A2-2894EB4E1DEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89321954-C686-444A-82A2-2894EB4E1DEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
