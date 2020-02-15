@@ -19,7 +19,10 @@
                         <Setter.Value>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Margin="3" Width="20" Source="Images/disc.png" />
+                                    <!-- The source is bound to the relative ancestor that is of type TreeViewItem setting the Path to the Tag -->
+                                    <Image Margin="3" Width="20" Source="{Binding 
+                                        RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeViewItem}},
+                                        Path=Tag, Converter={x:Static local:HeaderToImageConverter.Instance}}" />
                                     <!-- Binding refers to the Header set on the item -->
                                     <TextBlock VerticalAlignment="Center" Text="{Binding}" />
                                 </StackPanel>

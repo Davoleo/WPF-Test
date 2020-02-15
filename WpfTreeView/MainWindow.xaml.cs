@@ -55,8 +55,15 @@ namespace WpfTreeView
             }
         }
 
+        #endregion
+
         #region Folder Expanded Event
 
+        /// <summary>
+        /// Called when a folder is expanded (finds all the subfolders and subfiles)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Folder_Expanded(object sender, RoutedEventArgs e)
         {
 
@@ -185,9 +192,5 @@ namespace WpfTreeView
             //Return everything after the last slash
             return path.Substring(lastEntryIndex + 1);
         }
-
-        #endregion
-
-
     }
 }
