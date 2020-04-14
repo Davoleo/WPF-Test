@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF-Test", "WPF-Test\WPF-Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTreeView", "WpfTreeView\WpfTreeView.csproj", "{89321954-C686-444A-82A2-2894EB4E1DEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfChatApp", "WpfChatApp\WpfChatApp.csproj", "{F060858B-643B-4FF8-86F7-DBD068849CF1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{89321954-C686-444A-82A2-2894EB4E1DEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89321954-C686-444A-82A2-2894EB4E1DEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89321954-C686-444A-82A2-2894EB4E1DEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F060858B-643B-4FF8-86F7-DBD068849CF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F060858B-643B-4FF8-86F7-DBD068849CF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F060858B-643B-4FF8-86F7-DBD068849CF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F060858B-643B-4FF8-86F7-DBD068849CF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

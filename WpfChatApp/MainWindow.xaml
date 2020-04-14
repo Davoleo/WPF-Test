@@ -1,0 +1,17 @@
+﻿<Window x:Class="WpfChatApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfChatApp"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Icon="Resources/Logo/logo-small.png"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel>
+        <Button FontSize="20" Content="TESt" />
+        <Label FontSize="20" Content="TESt" />
+        <TextBox FontSize="30" Text="screen MODE!"></TextBox>
+    </StackPanel>
+</Window>
