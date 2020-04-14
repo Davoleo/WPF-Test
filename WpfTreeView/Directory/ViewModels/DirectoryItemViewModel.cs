@@ -6,7 +6,7 @@ using WpfTreeView.Directory.Data;
 namespace WpfTreeView.Directory.ViewModels
 {
     // More UI-Specific than the internal object
-    class DirectoryItemViewModel
+    class DirectoryItemViewModel : BaseViewModel
     {
 
         #region Public Properties
@@ -63,7 +63,6 @@ namespace WpfTreeView.Directory.ViewModels
 
         #endregion
 
-
         /// <summary>
         /// Default Constructor
         /// <param name="fullPath">The full path of this item</param>
@@ -82,6 +81,8 @@ namespace WpfTreeView.Directory.ViewModels
             ClearChildren();
         }
 
+        #region Helper Methods
+
         /// <summary>
         /// Expands this item and finds all the children
         /// </summary>
@@ -91,13 +92,11 @@ namespace WpfTreeView.Directory.ViewModels
                 return;
 
             //Find All the Children
+            var children = DirectoryStructure.GetDirectoryContents(FullPath);
             Children = new ObservableCollection<DirectoryItemViewModel>(
-                DirectoryStructure.GetDirectoryContents(this.FullPath)
-                    .Select(content => new DirectoryItemViewModel(content.FullPath, content.Type))
+                children.Select(content => new DirectoryItemViewModel(content.FullPath, content.Type))
             );
         }
-
-        #region Helper Methods
 
         /// <summary>
         /// Removes all children from the Observable Collection
