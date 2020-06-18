@@ -1,5 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Navigation;
+using Microsoft.Win32;
 
 namespace WPF_Test
 {
@@ -10,52 +13,34 @@ namespace WPF_Test
     {
         public MainWindow()
         {
+            //Initializes and runs the window when the application starts
             InitializeComponent();
-        }
-        private void Window_OnLoaded(object sender, RoutedEventArgs e)
-        {
-            FinishComboBox_OnSelectionChanged(ComboFinish, null);
-        }
 
-        private void ButtonApply_OnClick(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show($"The Description is {this.TextboxDescription.Text}", "HEY", MessageBoxButton.OK);
+            Title = "Home Window!";
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
-        private void ButtonReset_OnClick(object sender, RoutedEventArgs e)
+        private void MainWindow_OnMouseMove(object sender, MouseEventArgs e)
         {
-            CheckboxWeld.IsChecked = 
-                CheckboxAssembly.IsChecked = 
-                    CheckboxPlasma.IsChecked = 
-                        CheckboxLaser.IsChecked = 
-                            CheckboxPurchase.IsChecked = 
-                                CheckboxLathe.IsChecked = 
-                                    CheckboxDrill.IsChecked = 
-                                        CheckboxFold.IsChecked = 
-                                            CheckboxRoll.IsChecked = 
-                                                CheckboxSaw.IsChecked = false;
-
+            MouseCoordsLabel.Content = e.GetPosition(this).ToString();
         }
 
-        private void Checkbox_OnChecked(object sender, RoutedEventArgs e)
+        private void WindowCloseButton_OnClick(object sender, RoutedEventArgs e)
         {
-            TextboxDescription.Text += $"{((CheckBox) sender).Content}, ";
+            MessageBox.Show("The App is Closing");
+            Close();
         }
 
-        private void FinishComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ButtonOpenFile_OnClick(object sender, RoutedEventArgs e)
         {
-            ComboBox combo = (ComboBox) sender;
-
-            if (TextBoxNote != null)
-            {
-                var selectedItem = (ComboBoxItem) combo.SelectedItem;
-                TextBoxNote.Text = selectedItem.Content.ToString();
-            }
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.ShowDialog();
         }
 
-        private void TextBoxSupplierCode_OnTextChanged(object sender, TextChangedEventArgs e)
+        private void ButtonOpenForm_OnClick(object sender, RoutedEventArgs e)
         {
-            TextBoxPartNumber.Text = TextBoxSupplierCode.Text;
+            Order orderForm = new Order();
+            orderForm.Show();
         }
     }
 }
