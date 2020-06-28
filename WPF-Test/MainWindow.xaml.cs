@@ -1,8 +1,7 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Navigation;
 using Microsoft.Win32;
+using WPF_Test.Windows;
 
 namespace WPF_Test
 {
@@ -31,16 +30,16 @@ namespace WPF_Test
             Close();
         }
 
-        private void ButtonOpenFile_OnClick(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.ShowDialog();
-        }
-
         private void ButtonOpenForm_OnClick(object sender, RoutedEventArgs e)
         {
             Order orderForm = new Order();
             orderForm.Show();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MenuBars menuBarsForm = new MenuBars();
+            menuBarsForm.Show();
         }
     }
 }
