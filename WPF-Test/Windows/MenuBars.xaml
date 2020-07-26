@@ -69,6 +69,35 @@
 
                 </MenuItem>
             </Menu>
+
+            <ToolBarTray DockPanel.Dock="Top">
+                <ToolBar>
+                    <Button x:Name="tbOpen" ToolTip="Open File" Click="MenuOpen_OnClick">
+                        <Image Source="../Resources/OpenFile_16x.png" />
+                    </Button>
+                    <Button x:Name="tbSave" ToolTip="Save File" Click="MenuSave_OnClick">
+                        <Image Source="../Resources/Save_16x.png" />
+                    </Button>
+                    <Button x:Name="tbCut" Command="ApplicationCommands.Cut">
+                        <Label>Cut</Label>
+                    </Button>
+                    <Button x:Name="tbCopy" Command="ApplicationCommands.Copy">
+                        <Label>Copy</Label>
+                    </Button>
+                    <Button x:Name="tbPaste" Command="ApplicationCommands.Paste">
+                        <Label>Paste</Label>
+                    </Button>
+                    <Separator />
+                    <Label>Font Size:</Label>
+                    <ComboBox SelectedIndex="1" x:Name="comboFontSize" SelectionChanged="ComboFontSize_OnSelectionChanged" DropDownClosed="ComboFontSize_OnDropDownClosed">
+                        <ComboBoxItem>10</ComboBoxItem>
+                        <ComboBoxItem>12</ComboBoxItem>
+                        <ComboBoxItem>14</ComboBoxItem>
+                        <ComboBoxItem>16</ComboBoxItem>
+                    </ComboBox>
+                </ToolBar>
+            </ToolBarTray>
+
             <TextBox x:Name="TextBoxEditor"></TextBox>
         </DockPanel>
     </Grid>
