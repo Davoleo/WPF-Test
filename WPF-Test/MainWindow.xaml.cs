@@ -41,5 +41,11 @@ namespace WPF_Test
             MenuBars menuBarsForm = new MenuBars();
             menuBarsForm.Show();
         }
+
+        private void OpenTest2Form(object sender, RoutedEventArgs e)
+        {
+            Tests2 tests2 = new Tests2();
+            tests2.Show();
+        }
     }
 }

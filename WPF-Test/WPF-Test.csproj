@@ -58,6 +58,9 @@
     <Compile Include="Windows\MenuBars.xaml.cs">
       <DependentUpon>MenuBars.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Test2.xaml.cs">
+      <DependentUpon>Test2.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -75,6 +78,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\MenuBars.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Test2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
