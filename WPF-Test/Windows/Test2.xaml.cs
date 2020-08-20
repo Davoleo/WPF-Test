@@ -32,12 +32,9 @@ namespace WPF_Test.Windows
             if (calendar.SelectedDate.HasValue)
             {
                 DateTime date = calendar.SelectedDate.Value;
-                try
+                if (TextBoxDate != null)
                 {
                     TextBoxDate.Text = date.ToShortDateString();
-                }
-                catch (NullReferenceException exception)
-                {
                 }
             }
         }

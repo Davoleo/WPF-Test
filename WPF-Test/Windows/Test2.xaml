@@ -42,6 +42,71 @@
                     </InkCanvas>
                 </StackPanel>
             </TabItem>
+            <TabItem Header="FlowReader" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top">
+                <Grid>
+                    <FlowDocumentReader 
+                        ViewingMode="Page" 
+                        IsFindEnabled="True" 
+                        IsPageViewEnabled="True"
+                        IsScrollViewEnabled="True"
+                        IsTwoPageViewEnabled="True">
+                        <FlowDocument>
+                            <Paragraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</Paragraph>
+                            
+                            <List>
+                                <ListItem><Paragraph>Item 1</Paragraph></ListItem>
+                                <ListItem><Paragraph>Item 2</Paragraph></ListItem>
+                                <ListItem><Paragraph>Item 3</Paragraph></ListItem>
+                            </List>
+
+                            <BlockUIContainer>
+                                <StackPanel>
+                                    <Image Source="../Resources/test.ico" Height="32"></Image>
+                                    <Label Foreground="Blue">Fave OS: </Label>
+                                    <ComboBox>
+                                        <ComboBoxItem IsSelected="True">Android</ComboBoxItem>
+                                        <ComboBoxItem>iOS</ComboBoxItem>
+                                        <ComboBoxItem>Windows</ComboBoxItem>
+                                    </ComboBox>
+
+                                    <Label Foreground="Red">Fave Color:</Label>
+
+                                    <StackPanel>
+                                        <RadioButton>Red</RadioButton>
+                                        <RadioButton>Blue</RadioButton>
+                                        <RadioButton>Green</RadioButton>
+                                    </StackPanel>
+
+                                    <Label>Name: </Label>
+                                    <TextBox></TextBox>
+                                </StackPanel>
+                            </BlockUIContainer>
+
+                            <Paragraph></Paragraph>
+
+                            <Table>
+                                <Table.Columns>
+                                    <TableColumn />
+                                    <TableColumn />
+                                    <TableColumn />
+                                </Table.Columns>
+                                <TableRowGroup>
+                                    <TableRow>
+                                        <TableCell ColumnSpan="3" Background="AntiqueWhite">
+                                            <Paragraph Padding="10">Kappa</Paragraph>
+                                        </TableCell>
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell Background="Bisque"><Paragraph>Name</Paragraph></TableCell>
+                                        <TableCell Background="Bisque"><Paragraph>Average</Paragraph></TableCell>
+                                        <TableCell Background="Bisque"><Paragraph>Home Runs</Paragraph></TableCell>
+                                    </TableRow>
+                                </TableRowGroup>
+                            </Table>
+                        </FlowDocument>
+                    </FlowDocumentReader>
+                </Grid>
+            </TabItem>
         </TabControl>
 
     </Grid>
