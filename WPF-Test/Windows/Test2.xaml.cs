@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
+using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
 using System.Windows.Ink;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace WPF_Test.Windows
 {
@@ -24,6 +18,30 @@ namespace WPF_Test.Windows
         public Tests2()
         {
             InitializeComponent();
+
+            GenerateFlowDocument();
+        }
+
+        private void GenerateFlowDocument()
+        {
+            FlowDocument document = new FlowDocument();
+
+            Paragraph paragraph = new Paragraph(new Run("akjdaksdhajsdhkasdhjkashajhkashdjkasdhajkshdajksdhajksdhajkshdakjsdhakjsdhajkdha"));
+
+            document.Blocks.Add(paragraph);
+
+            paragraph = new Paragraph(new Run(
+                "test string number 22222222222222222222222222222222222222222222222222222222222222222222222"))
+            {
+                FontSize = 14,
+                FontStyle = FontStyles.Italic,
+                Foreground = Brushes.DarkSalmon
+            };
+
+            document.Blocks.Add(paragraph);
+
+            FlowScrollViewer.Document = document;
+
         }
 
         private void Calendar_OnSelectedDatesChanged(object sender, SelectionChangedEventArgs e)
@@ -110,6 +128,54 @@ namespace WPF_Test.Windows
             {
                 StrokeCollection strokeCollection = new StrokeCollection(fs);
                 DrawingCanvas.Strokes = strokeCollection;
+            }
+        }
+
+        //Rich Textbox Methods
+        private void RichTextBoxContextMenuOpening(object sender, ContextMenuEventArgs e)
+        {
+            RichTextBox textBox = sender as RichTextBox;
+
+            if (textBox == null)
+                return;
+
+            ContextMenu contextMenu = textBox.ContextMenu;
+            contextMenu.PlacementTarget = textBox;
+
+            contextMenu.Placement = PlacementMode.RelativePoint;
+
+            TextPointer position = textBox.Selection.End;
+
+            if (position == null)
+                return;
+
+            Rect positionRect = position.GetCharacterRect(LogicalDirection.Forward);
+            contextMenu.HorizontalOffset = positionRect.X;
+            contextMenu.VerticalOffset = positionRect.Y;
+
+            contextMenu.IsOpen = true;
+        }
+
+        private void SaveRichTextBoxContent(object sender, RoutedEventArgs e)
+        {
+            TextRange range = new TextRange(RichTextBox.Document.ContentStart, RichTextBox.Document.ContentEnd);
+
+            FileStream fs = new FileStream("E:\\C#Data\\richText.xaml", FileMode.Create);
+            range.Save(fs, DataFormats.XamlPackage);
+            fs.Close();
+        }
+
+        private void OpenRichTextBoxContent(object sender, RoutedEventArgs e)
+        {
+            TextRange range;
+            FileStream fs;
+
+            if (File.Exists("E:\\C#Data\\richText.xaml"))
+            {
+                range = new TextRange(RichTextBox.Document.ContentStart, RichTextBox.Document.ContentEnd);
+                fs = new FileStream("E:\\C#Data\\richText.xaml", FileMode.OpenOrCreate);
+                range.Load(fs, DataFormats.XamlPackage);
+                fs.Close();
             }
         }
     }
