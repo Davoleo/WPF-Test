@@ -7,6 +7,7 @@ using System.Windows.Documents;
 using System.Windows.Ink;
 using System.Windows.Input;
 using System.Windows.Media;
+using Microsoft.Win32;
 
 namespace WPF_Test.Windows
 {
@@ -17,8 +18,11 @@ namespace WPF_Test.Windows
     {
         public Tests2()
         {
+            //Initializes and runs the window when the application starts
             InitializeComponent();
 
+            Title = "Home Window!";
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             GenerateFlowDocument();
         }
 
@@ -178,5 +182,92 @@ namespace WPF_Test.Windows
                 fs.Close();
             }
         }
+
+        #region Main Tab
+
+        private void MainWindow_OnMouseMove(object sender, MouseEventArgs e)
+        {
+            MouseCoordsLabel.Content = e.GetPosition(this).ToString();
+        }
+
+        private void WindowCloseButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("The App is Closing");
+            Close();
+        }
+
+        private void ButtonOpenForm_OnClick(object sender, RoutedEventArgs e)
+        {
+            Order orderForm = new Order();
+            orderForm.Show();
+        }
+
+        #endregion
+
+        #region Menu Bars
+
+        private void MenuOpen_OnClick(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.ShowDialog();
+        }
+
+        private void MenuSave_OnClick(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.ShowDialog();
+        }
+
+        private void MenuItemFontTimes_OnClick(object sender, RoutedEventArgs e)
+        {
+            MenuItemFontConsolas.IsChecked = false;
+            MenuItemFontArial.IsChecked = false;
+            TextBoxEditor.FontFamily = new FontFamily("Times New Roman");
+        }
+
+        private void MenuItemFontConsolas_OnClick(object sender, RoutedEventArgs e)
+        {
+            MenuItemFontTimes.IsChecked = false;
+            MenuItemFontArial.IsChecked = false;
+            TextBoxEditor.FontFamily = new FontFamily("Consolas");
+        }
+
+        private void MenuItemFontArial_OnClick(object sender, RoutedEventArgs e)
+        {
+            MenuItemFontTimes.IsChecked = false;
+            MenuItemFontConsolas.IsChecked = false;
+            TextBoxEditor.FontFamily = new FontFamily("Arial");
+        }
+
+        private void MenuExit_OnClick(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private bool comboIsClosed = true;
+
+        private void ChangeFontSize()
+        {
+            string fontSize = comboFontSize.SelectedItem.ToString();
+            fontSize = fontSize.Substring(fontSize.Length - 2);
+            if (TextBoxEditor != null)
+                TextBoxEditor.FontSize = Int32.Parse(fontSize);
+        }
+
+        private void ComboFontSize_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (comboIsClosed)
+                ChangeFontSize();
+            comboIsClosed = true;
+        }
+
+        private void ComboFontSize_OnDropDownClosed(object sender, EventArgs e)
+        {
+            ComboBox comboBox = sender as ComboBox;
+            comboIsClosed = !comboBox.IsDropDownOpen;
+            ChangeFontSize();
+        }
+
+        #endregion
     }
 }

@@ -6,9 +6,77 @@
         xmlns:local="clr-namespace:WPF_Test.Windows"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Tests2" Height="450" Width="800">
+        Title="Tests2" Height="600" Width="800">
+    <Window.Resources>
+        <!-- Defining Static Resources you can use in XML later in the file --> 
+        <system:String x:Key="stringHelloAgain">Hello Again</system:String>
+        <!-- Defining default styling -->
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="1" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="Jetbrains Mono" />
+        </Style>
+    </Window.Resources>
     <Grid>
-        <TabControl HorizontalAlignment="Left" Height="421" VerticalAlignment="Top" Width="790">
+        <TabControl HorizontalAlignment="Left" VerticalAlignment="Top" Width="800">
+            <TabItem Header="Main" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top">
+                <StackPanel Orientation="Vertical">
+                    <Label x:Name="MouseCoordsLabel" Content="Label" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Text="Hello World!" VerticalAlignment="Top" FontSize="20" />
+                    <TextBlock Text="{StaticResource stringHelloAgain}" FontSize="18" HorizontalAlignment="Center" />
+                    <Button x:Name="ButtonClose" Height="40" Width="150" Content="Close" Click="WindowCloseButton_OnClick"/>
+                    <Button x:Name="ButtonOpenForm" Height="40" Width="250" Content="Make Order" Click="ButtonOpenForm_OnClick"/>
+                    <Button x:Name="ButtonOpenPage" Height="40" Width="250" Content="Open Page" />
+                    
+                    <Canvas Background="Gray" Height="100">
+                        <Label Content="Name" Canvas.Left="35" Canvas.Top="46"/>
+                        <TextBox x:Name="TextBoxUsername" Height="23" Canvas.Left="95" TextWrapping="Wrap"  Canvas.Top="49" Width="120"/>
+                        <Button x:Name="ButtonSend" Content="Send" Canvas.Left="237" Canvas.Top="49" Width="76" Height="23"/>
+                    </Canvas>
+
+                    <WrapPanel Background="Gray" Orientation="Horizontal">
+                        <Label Content="Name" />
+                        <TextBox Name="Username" Width="150"></TextBox>
+                        <Button Content="Send" Width="75"></Button>
+                    </WrapPanel>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox Margin="2, 5" Grid.Row="0" Grid.ColumnSpan="4"/>
+                        <Button Content="7" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top"/>
+                        <Button Content="8" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top"/>
+                        <Button Content="9" Grid.Row="1" Grid.Column="2" VerticalAlignment="Top"/>
+                        <Button Content="+" Grid.Row="1" Grid.Column="3" VerticalAlignment="Top"/>
+
+                        <Button Content="4" Grid.Row="2" Grid.Column="0" VerticalAlignment="Top"/>
+                        <Button Content="5" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top"/>
+                        <Button Content="6" Grid.Row="2" Grid.Column="2" VerticalAlignment="Top"/>
+                        <Button Content="-" Grid.Row="2" Grid.Column="3" VerticalAlignment="Top"/>
+
+                        <Button Content="1" Grid.Row="3" Grid.Column="0" VerticalAlignment="Top"/>
+                        <Button Content="2" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top"/>
+                        <Button Content="3" Grid.Row="3" Grid.Column="2" VerticalAlignment="Top"/>
+                        <Button Content="*" Grid.Row="3" Grid.Column="3" VerticalAlignment="Top"/>
+
+                    </Grid>
+                </StackPanel>
+            </TabItem>
             <TabItem Header="Calendar">
                 <Grid Background="#FFE5E5E5">
                     <Calendar x:Name="Calendar" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" 
@@ -132,7 +200,103 @@
                     <Button Click="OpenRichTextBoxContent">Open</Button>
                 </StackPanel>
             </TabItem>
-        </TabControl>
+            <TabItem Header="Menu Bars" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="139*"/>
+                        <ColumnDefinition Width="441*"/>
+                        <ColumnDefinition Width="210*"/>
+                    </Grid.ColumnDefinitions>
+                    <ScrollViewer Grid.Column="2" Margin="0,0,0,332">
+                        <Grid>
+                            <Label Content="Label" HorizontalAlignment="Left" Margin="0,0,-17,0" VerticalAlignment="Top"/>
+                            <Label Content="Label" HorizontalAlignment="Left" Margin="0,25,-17,0" VerticalAlignment="Top"/>
+                            <Label Content="Label" HorizontalAlignment="Left" Margin="0,50,-17,0" VerticalAlignment="Top"/>
+                            <Label Content="Label" HorizontalAlignment="Left" Margin="0,75,-17,0" VerticalAlignment="Top"/>
+                            <Label Content="Label" HorizontalAlignment="Left" Margin="0,100,-17,0" VerticalAlignment="Top"/>
 
+                        </Grid>
+                    </ScrollViewer>
+
+                    <DockPanel Grid.Column="0">
+                        <Label x:Name="LabelTop" DockPanel.Dock="Top">TOP</Label>
+                        <Label x:Name="LabelLeft" DockPanel.Dock="Left">LEFT</Label>
+                        <Label x:Name="LabelRight" DockPanel.Dock="Right">RIGHT</Label>
+                        <Label x:Name="LabelBottom" DockPanel.Dock="Bottom">BOTTOM</Label>
+                        <Label x:Name="LabelCenter">CENTER</Label>
+                    </DockPanel>
+
+                    <DockPanel Grid.Column="1">
+                        <Menu DockPanel.Dock="Top">
+                            <MenuItem Header="_File">
+                                <MenuItem x:Name="MenuNew" Header="_New" InputGestureText="Ctrl+N">
+                                    <MenuItem.Icon>
+                                        <Image Source="../Resources/NewFile_16x.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem x:Name="MenuOpen" Header="_Open" InputGestureText="Ctrl+O" Click="MenuOpen_OnClick">
+                                    <MenuItem.Icon>
+                                        <Image Source="../Resources/OpenFile_16x.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem x:Name="MenuSave" Header="_Save" InputGestureText="Ctrl+S" Click="MenuSave_OnClick">
+                                    <MenuItem.Icon>
+                                        <Image Source="../Resources/Save_16x.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem x:Name="MenuExit" Header="E_xit" Click="MenuExit_OnClick" >
+                                    <MenuItem.Icon>
+                                        <Image Source="../Resources/CloseSolution_16x.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            </MenuItem>
+
+                            <MenuItem Header="_Edit">
+                                <MenuItem x:Name="MenuCut" Header="Cut" Command="ApplicationCommands.Cut" InputGestureText="Ctrl+X" />
+                                <MenuItem x:Name="MenuCopy" Header="Copy" Command="ApplicationCommands.Copy" InputGestureText="Ctrl+C" />
+                                <MenuItem x:Name="MenuPaste" Header="Paste" Command="ApplicationCommands.Paste" InputGestureText="Ctrl+V" />
+                                <Separator />
+                                <MenuItem Header="_Font" InputGestureText="Ctrl+F">
+                                    <MenuItem x:Name="MenuItemFontTimes" Header="Times New Roman" IsCheckable="True" StaysOpenOnClick="True" Click="MenuItemFontTimes_OnClick"></MenuItem>
+                                    <MenuItem x:Name="MenuItemFontConsolas" Header="Consolas" IsCheckable="True" StaysOpenOnClick="True" Click="MenuItemFontConsolas_OnClick"></MenuItem>
+                                    <MenuItem x:Name="MenuItemFontArial" Header="Arial" IsCheckable="True" StaysOpenOnClick="True" Click="MenuItemFontArial_OnClick"></MenuItem>
+                                </MenuItem>
+
+                            </MenuItem>
+                        </Menu>
+
+                        <ToolBarTray DockPanel.Dock="Top">
+                            <ToolBar>
+                                <Button x:Name="tbOpen" ToolTip="Open File" Click="MenuOpen_OnClick">
+                                    <Image Source="../Resources/OpenFile_16x.png" />
+                                </Button>
+                                <Button x:Name="tbSave" ToolTip="Save File" Click="MenuSave_OnClick">
+                                    <Image Source="../Resources/Save_16x.png" />
+                                </Button>
+                                <Button x:Name="tbCut" Command="ApplicationCommands.Cut">
+                                    <Label>Cut</Label>
+                                </Button>
+                                <Button x:Name="tbCopy" Command="ApplicationCommands.Copy">
+                                    <Label>Copy</Label>
+                                </Button>
+                                <Button x:Name="tbPaste" Command="ApplicationCommands.Paste">
+                                    <Label>Paste</Label>
+                                </Button>
+                                <Separator />
+                                <Label>Font Size:</Label>
+                                <ComboBox SelectedIndex="1" x:Name="comboFontSize" SelectionChanged="ComboFontSize_OnSelectionChanged" DropDownClosed="ComboFontSize_OnDropDownClosed">
+                                    <ComboBoxItem>10</ComboBoxItem>
+                                    <ComboBoxItem>12</ComboBoxItem>
+                                    <ComboBoxItem>14</ComboBoxItem>
+                                    <ComboBoxItem>16</ComboBoxItem>
+                                </ComboBox>
+                            </ToolBar>
+                        </ToolBarTray>
+
+                        <TextBox x:Name="TextBoxEditor"></TextBox>
+                    </DockPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
